@@ -1,0 +1,85 @@
+﻿@model TechnicalMarineSolutions.Models.Binding.PersonalInfo
+
+@{
+	ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+	<h4>PersonalInfo</h4>
+	<hr/>
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.UserInfo.UserId)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.UserInfo.UserId)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.RecordStatus)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.RecordStatus)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.FirstName)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.FirstName)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.MiddleName)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.MiddleName)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.LastName)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.LastName)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Hometown)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Hometown)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.CurrentTown)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.CurrentTown)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.BirthDate)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.BirthDate)
+		</dd>
+
+	</dl>
+</div>
+<p>
+	@Html.ActionLink("Edit", "Edit", new
+									{
+										id = Model.Id
+									}) |
+	@Html.ActionLink("Back to List", "Index")
+</p>

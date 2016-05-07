@@ -1,0 +1,255 @@
+﻿@model TechnicalMarineSolutions.Models.Binding.Project
+
+@{
+	ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+	<h4>Project</h4>
+	<hr/>
+	@Html.ValidationSummary(true, "", new
+									{
+										@class = "text-danger"
+									})
+	<div class="form-group">
+		@Html.LabelFor(model => model.RecordStatus, new
+													{
+														@class = "control-label col-md-2"
+													})
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.RecordStatus, new
+														{
+															htmlAttributes = new
+																			{
+																				@class = "form-control"
+																			}
+														})
+			@Html.ValidationMessageFor(model => model.RecordStatus, "", new
+																		{
+																			@class = "text-danger"
+																		})
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.ProjectStatus, new
+													{
+														@class = "control-label col-md-2"
+													})
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.ProjectStatus, new
+														{
+															htmlAttributes = new
+																			{
+																				@class = "form-control"
+																			}
+														})
+			@Html.ValidationMessageFor(model => model.ProjectStatus, "", new
+																		{
+																			@class = "text-danger"
+																		})
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Name, new
+											{
+												@class = "control-label col-md-2"
+											})
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Name, new
+												{
+													htmlAttributes = new
+																	{
+																		@class = "form-control"
+																	}
+												})
+			@Html.ValidationMessageFor(model => model.Name, "", new
+																{
+																	@class = "text-danger"
+																})
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Description, new
+													{
+														@class = "control-label col-md-2"
+													})
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Description, new
+														{
+															htmlAttributes = new
+																			{
+																				@class = "form-control"
+																			}
+														})
+			@Html.ValidationMessageFor(model => model.Description, "", new
+																		{
+																			@class = "text-danger"
+																		})
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Notes, new
+											{
+												@class = "control-label col-md-2"
+											})
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Notes, new
+												{
+													htmlAttributes = new
+																	{
+																		@class = "form-control"
+																	}
+												})
+			@Html.ValidationMessageFor(model => model.Notes, "", new
+																{
+																	@class = "text-danger"
+																})
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.ProjectedStartDate, new
+														{
+															@class = "control-label col-md-2"
+														})
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.ProjectedStartDate, new
+																{
+																	htmlAttributes = new
+																					{
+																						@class = "form-control"
+																					}
+																})
+			@Html.ValidationMessageFor(model => model.ProjectedStartDate, "", new
+																			{
+																				@class = "text-danger"
+																			})
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.ProjectedEndDate, new
+														{
+															@class = "control-label col-md-2"
+														})
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.ProjectedEndDate, new
+															{
+																htmlAttributes = new
+																				{
+																					@class = "form-control"
+																				}
+															})
+			@Html.ValidationMessageFor(model => model.ProjectedEndDate, "", new
+																			{
+																				@class = "text-danger"
+																			})
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.EstimatedDuration, new
+														{
+															@class = "control-label col-md-2"
+														})
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.EstimatedDuration, new
+															{
+																htmlAttributes = new
+																				{
+																					@class = "form-control"
+																				}
+															})
+			@Html.ValidationMessageFor(model => model.EstimatedDuration, "", new
+																			{
+																				@class = "text-danger"
+																			})
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.StartDate, new
+												{
+													@class = "control-label col-md-2"
+												})
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.StartDate, new
+													{
+														htmlAttributes = new
+																		{
+																			@class = "form-control"
+																		}
+													})
+			@Html.ValidationMessageFor(model => model.StartDate, "", new
+																	{
+																		@class = "text-danger"
+																	})
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.EndDate, new
+												{
+													@class = "control-label col-md-2"
+												})
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.EndDate, new
+													{
+														htmlAttributes = new
+																		{
+																			@class = "form-control"
+																		}
+													})
+			@Html.ValidationMessageFor(model => model.EndDate, "", new
+																	{
+																		@class = "text-danger"
+																	})
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.TotalDuration, new
+													{
+														@class = "control-label col-md-2"
+													})
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.TotalDuration, new
+														{
+															htmlAttributes = new
+																			{
+																				@class = "form-control"
+																			}
+														})
+			@Html.ValidationMessageFor(model => model.TotalDuration, "", new
+																		{
+																			@class = "text-danger"
+																		})
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-10">
+			<input type="submit" value="Create" class="btn btn-default"/>
+		</div>
+	</div>
+	</div>
+}
+
+<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

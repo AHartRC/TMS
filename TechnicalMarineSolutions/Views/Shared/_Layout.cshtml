@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="@ViewBag.Description">
+	@*<meta name="keywords" content="@string.Join(", ", Html.Keywords().Union((IEnumerable<string>) ViewBag.Keywords))">*@
+	<meta name="author" content="Anthony Hart"/>
+
+	<title>@ViewBag.Title - Technical Marine Solutions, LLC.</title>
+
+	@Styles.Render("~/Content/normalize",
+					"~/Content/jqueryuibase",
+					"~/Content/jqueryuidefault",
+					"~/Content/jqueryuicupertino",
+
+					//"~/Content/jquerymobile",
+					"~/Content/bootstrap",
+					"~/Content/bootstraptheme",
+
+					//"~/Content/bootstrapcerulean",
+					"~/Content/fontawesome",
+					"~/Content/flexslider",
+					"~/Content/animate",
+					"~/Content/site")
+
+	@Styles.Render("~/Content/ionicons")
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		@Scripts.Render("~/bundles/html5shiv",
+						"~/bundles/html5shiv-print",
+						"~/bundles/respond")
+	<![endif]-->
+</head>
+<body>
+@Html.MvcSiteMap()
+	.Menu(false)
+<div class="container body-content">
+	@RenderBody()
+	<hr/>
+	<section id="footer-defoult" class="padding-60">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 margin-btm20">
+					<div class="footer-column">
+						<h3>About us</h3>
+						<p class="margin-btm20">
+							Lorem ipsum ex vix illud nonummy, novum tation et his. At vix scriptaset patrioque scribentur, at pro fugit erts verterem molestiae, sed et vivendo ali Lorem ipsum ex vix illud nonummy, novum tation et his. At vix scripta patrioque scribentur.
+						</p>
+
+					</div><!--footer columns end-->
+				</div>
+				<div class="col-md-3 margin-btm20">
+					<div class="footer-column">
+						<h3>Latest post</h3>
+						<ul class="list-unstyled post-list">
+							<li>
+								<a href="#" class="hover-color">Blog slide post</a>
+							</li>
+							<li>
+								<a href="#" class="hover-color">Lorem ipsum dollor</a>
+							</li>
+							<li>
+								<a href="#" class="hover-color">Blog image post</a>
+							</li>
+							<li>
+								<a href="#" class="hover-color">Blog Video post</a>
+							</li>
+							<li>
+								<a href="#" class="hover-color">Lorem ipsum dollor</a>
+							</li>
+						</ul>
+
+					</div><!--footer columns end-->
+				</div>
+				<div class="col-md-3 margin-btm20">
+					<div class="footer-column">
+						<h3>Latest work</h3>
+						<ul class="list-unstyled work-list">
+							<li>
+								<a href="#">
+									<img src="~/Content/Images/img-1.jpg" class="img-responsive" alt="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Work Title">
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="~/Content/Images/img-2.jpg" class="img-responsive" alt="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Work Title">
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="~/Content/Images/img-3.jpg" class="img-responsive" alt="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Work Title">
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="~/Content/Images/img-4.jpg" class="img-responsive" alt="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Work Title">
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="~/Content/Images/img-5.jpg" class="img-responsive" alt="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Work Title">
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="~/Content/Images/img-6.jpg" class="img-responsive" alt="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Work Title">
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="~/Content/Images/img-2.jpg" class="img-responsive" alt="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Work Title">
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="~/Content/Images/img-1.jpg" class="img-responsive" alt="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Work Title">
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="~/Content/Images/img-3.jpg" class="img-responsive" alt="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Work Title">
+								</a>
+							</li>
+						</ul>
+					</div><!--footer columns end-->
+				</div>
+				<div class="col-md-3 margin-btm20">
+					<div class="footer-column">
+						<h3>Get in touch</h3>
+						<ul class="list-unstyled contact-list margin-btm20">
+							<li><i class="ion-home"></i> 124,munnawali<br>Jaipur,302012</li>
+							<li><i class="ion-ios-telephone"></i> <strong>Phone:</strong> +91 1234567890</li>
+							<li><i class="ion-ios-email"></i> <strong>Email:</strong> mail@domain.com</li>
+							<li><i class="ion-ios-world"></i> <strong>Website:</strong> http://www.site.com</li>
+						</ul>
+						<ul class="list-unstyled list-inline social">
+							<li>
+								<a href="#">
+									<i class="ion-social-facebook-outline" data-toggle="tooltip" data-placement="top" title="" data-original-title="Like On Facebook"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="ion-social-twitter-outline" data-toggle="tooltip" data-placement="top" title="" data-original-title="Follow On twitter"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="ion-social-googleplus-outline" data-toggle="tooltip" data-placement="top" title="" data-original-title="Follow On googleplus"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="ion-social-pinterest-outline" data-toggle="tooltip" data-placement="top" title="" data-original-title="pinterest"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="ion-social-skype-outline" data-toggle="tooltip" data-placement="top" title="" data-original-title="skype"></i>
+								</a>
+							</li>
+
+						</ul>
+					</div><!--footer columns end-->
+				</div>
+			</div><!--row end -->
+			<div class="divied-40"></div>
+			<div class="row">
+				<div class="col-md-12 text-center margin-btm20">
+					<a href="index.html">
+						<img src="~/Content/Images/logo-white.png">
+					</a>
+				</div>
+				<div class="col-md-12 text-center">
+					<span><attr title="All Rights Reserved">&copy; @DateTime.Now.Year Technical Marine Solutions</attr></span>
+					<span>Developed by <a href="http://www.anthonyhart.info">Anthony Hart</a></span>
+				</div>
+			</div>
+		</div><!--container-->
+	</section><!--footer default end-->
+</div>
+
+<!--scripts-->
+
+@Scripts.Render("~/bundles/jquery2x",
+				"~/bundles/jquerymigrate",
+				"~/bundles/jqueryui",
+
+				//"~/bundles/jquerymobile",
+				"~/bundles/jquerycolorplusnames",
+				"~/bundles/bootstrap",
+				"~/bundles/bootstraphover",
+				"~/bundles/toastr",
+				"~/bundles/wow",
+				"~/bundles/globalize",
+				"~/bundles/jqueryeasing",
+				"~/bundles/jquerymixitup",
+				"~/bundles/flexslider",
+				"~/bundles/isotope",
+				"~/bundles/site")
+
+@RenderSection("scripts", false)
+
+@*<script type="text/javascript">
+			var appInsights = window.appInsights || function (config) {
+				function r(config) {
+					t[config] = function () {
+						var i = arguments;
+						t.queue.push(function () { t[config].apply(t, i) });
+					};
+				}
+
+				var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f;
+				for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop());
+				return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) {
+					var s = f && f(config, r, u, e, o);
+					return s !== !0 && t["_" + i](config, r, u, e, o), s;
+				}), t;
+			}({
+				instrumentationKey: "17495966-b114-43b0-a4ac-a849fa1d6910"
+			});
+
+			window.appInsights = appInsights;
+			appInsights.trackPageView();
+		</script>*@
+</body>
+</html>

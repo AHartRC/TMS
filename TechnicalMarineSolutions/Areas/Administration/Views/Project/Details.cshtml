@@ -1,0 +1,109 @@
+﻿@model TechnicalMarineSolutions.Models.Binding.Project
+
+@{
+	ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+	<h4>Project</h4>
+	<hr/>
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.RecordStatus)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.RecordStatus)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.ProjectStatus)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.ProjectStatus)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Name)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Name)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Description)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Description)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Notes)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Notes)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.ProjectedStartDate)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.ProjectedStartDate)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.ProjectedEndDate)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.ProjectedEndDate)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.EstimatedDuration)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.EstimatedDuration)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.StartDate)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.StartDate)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.EndDate)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.EndDate)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.TotalDuration)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.TotalDuration)
+		</dd>
+
+	</dl>
+</div>
+<p>
+	@Html.ActionLink("Edit", "Edit", new
+									{
+										id = Model.Id
+									}) |
+	@Html.ActionLink("Back to List", "Index")
+</p>
