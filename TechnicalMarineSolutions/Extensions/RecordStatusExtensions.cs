@@ -1,6 +1,4 @@
 ﻿namespace TechnicalMarineSolutions.Extensions
 {
-	public static class RecordStatusExtensions
-	{
-	}
+	public static class RecordStatusExtensions {}
 }

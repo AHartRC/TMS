@@ -1,4 +1,4 @@
-﻿@using TechnicalMarineSolutions.Hashing
+﻿@model HomeViewModel
 @{
 	ViewBag.Title = "Home";
 }
@@ -73,10 +73,34 @@
 			<div class="col-md-3 margin-btm20">
 				<div class="services-box wow animated fadeInLeft" data-wow-delay="0.8s">
 					<i class="ion-ios-monitor-outline"></i>
-					<h3>We're Really Bad-Assed</h3>
-					<p>
-						Warheads on Foreheads. 'Murica! (We need to come up with some extra text for these)
-					</p>
+
+					<h1>Record Totals:</h1>
+					<ul>
+						<li>
+							Application Users: <strong>@Model.Counts[0]</strong>
+						</li>
+						<li>
+							User Information: <strong>@Model.Counts[1]</strong>
+						</li>
+						<li>
+							Personal Information: <strong>@Model.Counts[2]</strong>
+						</li>
+						<li>
+							Postal Addresses: <strong>@Model.Counts[3]</strong>
+						</li>
+						<li>
+							Projects: <strong>@Model.Counts[4]</strong>
+						</li>
+						<li>
+							Tasks: <strong>@Model.Counts[5]</strong>
+						</li>
+						<li>
+							Appointments: <strong>@Model.Counts[6]</strong>
+						</li>
+						<li>
+							Images: <strong>@Model.Counts[7]</strong>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -93,7 +117,7 @@
 				</h2>
 			</div>
 			<div class="col-md-12">
-				<ul class="portfolio-filters" text-center">
+				<ul class="portfolio-filters text-center">
 					<li class="filter" data-filter="all">all</li>
 					<li class="filter" data-filter="design">design</li>
 					<li class="filter" data-filter="html">HTML5</li>

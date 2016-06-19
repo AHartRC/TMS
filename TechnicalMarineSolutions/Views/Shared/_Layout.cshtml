@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using TechnicalMarineSolutions.Controllers
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8"/>
@@ -11,19 +12,17 @@
 	<title>@ViewBag.Title - Technical Marine Solutions, LLC.</title>
 
 	@Styles.Render("~/Content/normalize",
-					"~/Content/jqueryuibase",
-					"~/Content/jqueryuidefault",
-					"~/Content/jqueryuicupertino",
-
-					//"~/Content/jquerymobile",
-					"~/Content/bootstrap",
-					"~/Content/bootstraptheme",
-
-					//"~/Content/bootstrapcerulean",
-					"~/Content/fontawesome",
-					"~/Content/flexslider",
-					"~/Content/animate",
-					"~/Content/site")
+				   "~/Content/jqueryuibase",
+				   "~/Content/jqueryuidefault",
+				   "~/Content/jqueryuicupertino",
+				   "~/Content/jquerymobile",
+				   "~/Content/bootstrap",
+				   "~/Content/bootstraptheme",
+				   //"~/Content/bootstrapcerulean",
+				   "~/Content/fontawesome",
+				   "~/Content/flexslider",
+				   "~/Content/animate",
+				   "~/Content/site")
 
 	@Styles.Render("~/Content/ionicons")
 
@@ -35,8 +34,7 @@
 	<![endif]-->
 </head>
 <body>
-@Html.MvcSiteMap()
-	.Menu(false)
+@Html.MvcSiteMap().Menu(false)
 <div class="container body-content">
 	@RenderBody()
 	<hr/>
@@ -44,7 +42,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 margin-btm20">
-					<div class="footer-column">
+					<div class="footer-clmn">
 						<h3>About us</h3>
 						<p class="margin-btm20">
 							Lorem ipsum ex vix illud nonummy, novum tation et his. At vix scriptaset patrioque scribentur, at pro fugit erts verterem molestiae, sed et vivendo ali Lorem ipsum ex vix illud nonummy, novum tation et his. At vix scripta patrioque scribentur.
@@ -53,7 +51,7 @@
 					</div><!--footer columns end-->
 				</div>
 				<div class="col-md-3 margin-btm20">
-					<div class="footer-column">
+					<div class="footer-clmn">
 						<h3>Latest post</h3>
 						<ul class="list-unstyled post-list">
 							<li>
@@ -76,7 +74,7 @@
 					</div><!--footer columns end-->
 				</div>
 				<div class="col-md-3 margin-btm20">
-					<div class="footer-column">
+					<div class="footer-clmn">
 						<h3>Latest work</h3>
 						<ul class="list-unstyled work-list">
 							<li>
@@ -128,7 +126,7 @@
 					</div><!--footer columns end-->
 				</div>
 				<div class="col-md-3 margin-btm20">
-					<div class="footer-column">
+					<div class="footer-clmn">
 						<h3>Get in touch</h3>
 						<ul class="list-unstyled contact-list margin-btm20">
 							<li><i class="ion-home"></i> 124,munnawali<br>Jaipur,302012</li>
@@ -170,12 +168,11 @@
 			<div class="divied-40"></div>
 			<div class="row">
 				<div class="col-md-12 text-center margin-btm20">
-					<a href="index.html">
-						<img src="~/Content/Images/logo-white.png">
-					</a>
+					@Html.ImageLink(Href("~/Content/Images/logo-white.png"), "Company Logo", "Index", "Home", new {area = ""})
 				</div>
 				<div class="col-md-12 text-center">
-					<span><attr title="All Rights Reserved">&copy; @DateTime.Now.Year Technical Marine Solutions</attr></span>
+					<attr title="All Rights Reserved">
+						<span>&copy; @DateTime.Now.Year Technical Marine Solutions</span></attr>
 					<span>Developed by <a href="http://www.anthonyhart.info">Anthony Hart</a></span>
 				</div>
 			</div>
@@ -188,7 +185,6 @@
 @Scripts.Render("~/bundles/jquery2x",
 				"~/bundles/jquerymigrate",
 				"~/bundles/jqueryui",
-
 				//"~/bundles/jquerymobile",
 				"~/bundles/jquerycolorplusnames",
 				"~/bundles/bootstrap",
@@ -200,31 +196,38 @@
 				"~/bundles/jquerymixitup",
 				"~/bundles/flexslider",
 				"~/bundles/isotope",
+				"~/bundles/recaptcha",
 				"~/bundles/site")
+
+@if (BaseController.IsDebug)
+{
+	<text>
+		<script src='https://www.google.com/recaptcha/api.js'></script></text>
+}
 
 @RenderSection("scripts", false)
 
-@*<script type="text/javascript">
-			var appInsights = window.appInsights || function (config) {
-				function r(config) {
-					t[config] = function () {
-						var i = arguments;
-						t.queue.push(function () { t[config].apply(t, i) });
-					};
-				}
+<script type="text/javascript">
+	var appInsights = window.appInsights || function(config) {
+		function r(config) {
+			t[config] = function() {
+				var i = arguments;
+				t.queue.push(function() { t[config].apply(t, i) });
+			};
+		}
 
-				var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f;
-				for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop());
-				return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) {
-					var s = f && f(config, r, u, e, o);
-					return s !== !0 && t["_" + i](config, r, u, e, o), s;
-				}), t;
-			}({
-				instrumentationKey: "17495966-b114-43b0-a4ac-a849fa1d6910"
-			});
+		var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f;
+		for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop());
+		return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function(config, r, u, e, o) {
+			var s = f && f(config, r, u, e, o);
+			return s !== !0 && t["_" + i](config, r, u, e, o), s;
+		}), t;
+	}({
+		instrumentationKey: "17495966-b114-43b0-a4ac-a849fa1d6910"
+	});
 
-			window.appInsights = appInsights;
-			appInsights.trackPageView();
-		</script>*@
+	window.appInsights = appInsights;
+	appInsights.trackPageView();
+</script>
 </body>
 </html>

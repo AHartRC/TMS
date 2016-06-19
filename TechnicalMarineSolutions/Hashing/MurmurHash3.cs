@@ -1,13 +1,13 @@
-﻿#region Library Imports
-
-using System;
-using System.Text;
-using TechnicalMarineSolutions.Extensions;
-
-#endregion
-
-namespace TechnicalMarineSolutions.Hashing
+﻿namespace TechnicalMarineSolutions.Hashing
 {
+	#region Library Imports
+
+	using System;
+	using System.Text;
+	using TechnicalMarineSolutions.Extensions;
+
+	#endregion
+
 	public sealed class MurmurHash3
 	{
 		private const uint seed = 8675309;
@@ -35,7 +35,7 @@ namespace TechnicalMarineSolutions.Hashing
 				h1 += h2;
 				h2 += h1;
 
-				var hash = new byte[READ_SIZE];
+				byte[] hash = new byte[READ_SIZE];
 
 				Array.Copy(BitConverter.GetBytes(h1), 0, hash, 0, 8);
 				Array.Copy(BitConverter.GetBytes(h2), 0, hash, 8, 8);
@@ -95,16 +95,16 @@ namespace TechnicalMarineSolutions.Hashing
 
 		public static byte[] ComputeHash(string source)
 		{
-			var input = Encoding.UTF8.GetBytes(source);
-			var murmur = new MurmurHash3();
-			var output = murmur.ComputeHash(input);
+			byte[] input = Encoding.UTF8.GetBytes(source);
+			MurmurHash3 murmur = new MurmurHash3();
+			byte[] output = murmur.ComputeHash(input);
 			return output;
 		}
 
 		public static string GetHash(string source)
 		{
-			var hash = ComputeHash(source);
-			var resultA = BitConverter.ToUInt64(hash, 0);
+			byte[] hash = ComputeHash(source);
+			ulong resultA = BitConverter.ToUInt64(hash, 0);
 			return $"{resultA}";
 		}
 
@@ -113,16 +113,16 @@ namespace TechnicalMarineSolutions.Hashing
 			h1 = seed;
 			length = 0L;
 
-			var pos = 0;
-			var remaining = (ulong) bb.Length;
+			int pos = 0;
+			ulong remaining = (ulong) bb.Length;
 
 			// read 128 bits, 16 bytes, 2 longs in eacy cycle
 			while (remaining >= READ_SIZE)
 			{
-				var k1 = bb.GetUInt64(pos);
+				ulong k1 = bb.GetUInt64(pos);
 				pos += 8;
 
-				var k2 = bb.GetUInt64(pos);
+				ulong k2 = bb.GetUInt64(pos);
 				pos += 8;
 
 				length += READ_SIZE;
@@ -133,9 +133,7 @@ namespace TechnicalMarineSolutions.Hashing
 
 			// if the input MOD 16 != 0
 			if (remaining > 0)
-			{
 				ProcessBytesRemaining(bb, remaining, pos);
-			}
 		}
 
 		private void ProcessBytesRemaining(byte[] bb, ulong remaining, int pos)

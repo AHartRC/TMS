@@ -1,13 +1,13 @@
-#region Library Imports
-
-using System.Collections.Generic;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
-
-#endregion
-
 namespace TechnicalMarineSolutions.Models.View
 {
+	#region Library Imports
+
+	using System.Collections.Generic;
+	using Microsoft.AspNet.Identity;
+	using Microsoft.Owin.Security;
+
+	#endregion
+
 	public class ManageLoginsViewModel
 	{
 		public IList<UserLoginInfo> CurrentLogins

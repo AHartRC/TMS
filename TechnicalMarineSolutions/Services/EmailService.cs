@@ -1,12 +1,12 @@
-﻿#region Library Imports
-
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-
-#endregion
-
-namespace TechnicalMarineSolutions.Services
+﻿namespace TechnicalMarineSolutions.Services
 {
+	#region Library Imports
+
+	using System.Threading.Tasks;
+	using Microsoft.AspNet.Identity;
+
+	#endregion
+
 	public class EmailService : IIdentityMessageService
 	{
 		public Task SendAsync(IdentityMessage message)

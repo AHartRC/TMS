@@ -1,12 +1,12 @@
-#region Library Imports
-
-using System.Collections.Generic;
-using System.Web.Mvc;
-
-#endregion
-
 namespace TechnicalMarineSolutions.Models.View
 {
+	#region Library Imports
+
+	using System.Collections.Generic;
+	using System.Web.Mvc;
+
+	#endregion
+
 	public class SendCodeViewModel
 	{
 		public string SelectedProvider

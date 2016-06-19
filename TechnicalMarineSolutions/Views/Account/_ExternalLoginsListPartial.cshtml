@@ -1,4 +1,4 @@
-﻿@model TechnicalMarineSolutions.Models.View.ExternalLoginListViewModel
+﻿@model ExternalLoginListViewModel
 
 <h4>Use another service to log in.</h4>
 <hr/>
@@ -17,9 +17,9 @@
 	else
 	{
 		using (Html.BeginForm("ExternalLogin", "Account", new
-														{
-															Model.ReturnUrl
-														}))
+														  {
+															  Model.ReturnUrl
+														  }))
 		{
 			@Html.AntiForgeryToken()
 			<div id="socialLoginList">

@@ -106,6 +106,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -217,28 +218,125 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
-    <Compile Include="Areas\Administration\Controllers\AppointmentController.cs" />
-    <Compile Include="Areas\Administration\Controllers\AppointmentImageController.cs" />
-    <Compile Include="Areas\Administration\Controllers\AppointmentTaskController.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Administration\Controllers\ImagesController.cs" />
-    <Compile Include="Areas\Administration\Controllers\PersonalInfoController.cs" />
-    <Compile Include="Areas\Administration\Controllers\PostalAddressController.cs" />
-    <Compile Include="Areas\Administration\Controllers\ProjectAppointmentController.cs" />
-    <Compile Include="Areas\Administration\Controllers\ProjectController.cs" />
-    <Compile Include="Areas\Administration\Controllers\ProjectImageController.cs" />
-    <Compile Include="Areas\Administration\Controllers\ProjectTaskController.cs" />
-    <Compile Include="Areas\Administration\Controllers\TaskController.cs" />
-    <Compile Include="Areas\Administration\Controllers\TaskImageController.cs" />
-    <Compile Include="Areas\Administration\Controllers\UserController.cs" />
-    <Compile Include="Areas\Administration\Controllers\UserInfoController.cs" />
+    <Compile Include="Attributes\BotCheckAttribute.cs" />
+    <Compile Include="Attributes\CaptchaValidatorAttribute.cs" />
+    <Compile Include="Attributes\ElmahHandleErrorAttribute.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Enumerators\DifficultyLevel.cs" />
+    <Compile Include="Enumerators\DurationInterval.cs" />
+    <Compile Include="Enumerators\ItemCondition.cs" />
+    <Compile Include="Enumerators\PackageType.cs" />
+    <Compile Include="Enumerators\ProgressStatus.cs" />
+    <Compile Include="Extensions\CharExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Hashing\Salsa20.cs" />
+    <Compile Include="Helpers\Traffic.cs" />
+    <Compile Include="Interfaces\Base\I3Dimension.cs" />
+    <Compile Include="Interfaces\Base\I2Dimension.cs" />
+    <Compile Include="Interfaces\Base\IElmahError.cs" />
+    <Compile Include="Interfaces\Base\ICost.cs" />
+    <Compile Include="Interfaces\Base\IMedia.cs" />
+    <Compile Include="Interfaces\Base\IOrder.cs" />
+    <Compile Include="Interfaces\Base\IQuantity.cs" />
+    <Compile Include="Interfaces\Base\IRecipient.cs" />
+    <Compile Include="Interfaces\Base\IRetailItem.cs" />
+    <Compile Include="Interfaces\Base\IStreetAddress.cs" />
+    <Compile Include="Interfaces\Binding\IAppError.cs" />
+    <Compile Include="Interfaces\Binding\IAppointment.cs" />
+    <Compile Include="Interfaces\Binding\IComponent.cs" />
+    <Compile Include="Interfaces\Binding\IEngine.cs" />
+    <Compile Include="Interfaces\Binding\IInformation.cs" />
+    <Compile Include="Interfaces\Binding\IInventory.cs" />
+    <Compile Include="Interfaces\Binding\IManufacturer.cs" />
+    <Compile Include="Interfaces\Binding\IFullOrder.cs" />
+    <Compile Include="Interfaces\Binding\IPartOrderItem.cs" />
+    <Compile Include="Interfaces\Binding\IProject.cs" />
+    <Compile Include="Interfaces\Binding\IStep.cs" />
+    <Compile Include="Interfaces\Binding\ITertiaryCategory.cs" />
+    <Compile Include="Interfaces\Binding\ISubCategory.cs" />
+    <Compile Include="Interfaces\Binding\ICategory.cs" />
+    <Compile Include="Interfaces\Base\IDisplayName.cs" />
+    <Compile Include="Interfaces\Base\IFullName.cs" />
+    <Compile Include="Interfaces\Binding\IImage.cs" />
+    <Compile Include="Interfaces\Binding\IWorkOrderItem.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyAppErrorable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyAppointmentable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyCategoryable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyTertiaryCategoryable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManySubCategoryable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IAppErrorable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IAppointmentable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyComponentable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IComponentable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyEngineable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IEngineable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyImageable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IImageable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyInformationable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IInformationable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyInventoryable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IInventoryable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyManufacturerable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IManufacturerable.cs" />
+    <Compile Include="Interfaces\Base\IName.cs" />
+    <Compile Include="Interfaces\Base\IDuration.cs" />
+    <Compile Include="Interfaces\Binding\IPart.cs" />
+    <Compile Include="Interfaces\Base\IPier.cs" />
+    <Compile Include="Interfaces\Binding\IPostalAddress.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyOrderable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyPartable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IPartable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyPartOrderItemable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IPartOrderItemable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyPostalAddressable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IPostalAddressable.cs" />
+    <Compile Include="Interfaces\Base\IScheduledDuration.cs" />
+    <Compile Include="Interfaces\Base\IProjectedDuration.cs" />
+    <Compile Include="Interfaces\Base\IRecordStatus.cs" />
+    <Compile Include="Interfaces\Base\IProgressStatus.cs" />
+    <Compile Include="Interfaces\Mapping\One\ICategorizable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyProjectable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IProjectable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyStepable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IStepable.cs" />
+    <Compile Include="Interfaces\Mapping\One\ITertiaryCategoryable.cs" />
+    <Compile Include="Interfaces\Mapping\One\ISubCategoryable.cs" />
+    <Compile Include="Interfaces\Mapping\One\ICategoryable.cs" />
+    <Compile Include="Interfaces\Base\IAuthor.cs" />
+    <Compile Include="Interfaces\Base\IDescription.cs" />
+    <Compile Include="Interfaces\Base\ITitle.cs" />
+    <Compile Include="Interfaces\Base\INote.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyUserable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IUserable.cs" />
+    <Compile Include="Interfaces\Binding\IVehicle.cs" />
+    <Compile Include="Interfaces\Mapping\One\IOrderable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyVehicleable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IVehicleable.cs" />
+    <Compile Include="Interfaces\Mapping\Many\IManyWorkOrderItemable.cs" />
+    <Compile Include="Interfaces\Mapping\One\IWorkOrderItemable.cs" />
+    <Compile Include="Models\Binding\AppError.cs" />
+    <Compile Include="Models\Binding\User.cs" />
     <Compile Include="Models\Binding\Appointment.cs" />
+    <Compile Include="Models\Binding\Category.cs" />
+    <Compile Include="Models\Binding\Component.cs" />
+    <Compile Include="Models\Binding\Engine.cs" />
     <Compile Include="Models\Binding\Image.cs" />
-    <Compile Include="Models\Binding\Person.cs" />
+    <Compile Include="Models\Binding\Information.cs" />
+    <Compile Include="Models\Binding\Inventory.cs" />
+    <Compile Include="Models\Binding\Manufacturer.cs" />
+    <Compile Include="Models\Binding\Order.cs" />
+    <Compile Include="Models\Binding\Part.cs" />
+    <Compile Include="Models\Binding\PartOrderItem.cs" />
     <Compile Include="Models\Binding\PostalAddress.cs" />
     <Compile Include="Models\Binding\Project.cs" />
-    <Compile Include="Models\Binding\Task.cs" />
-    <Compile Include="Models\Binding\User.cs" />
+    <Compile Include="Models\Binding\Step.cs" />
+    <Compile Include="Models\Binding\SubCategory.cs" />
+    <Compile Include="Models\Binding\TertiaryCategory.cs" />
+    <Compile Include="Models\Binding\Vehicle.cs" />
+    <Compile Include="Models\Binding\WorkOrderItem.cs" />
+    <Compile Include="Models\Mapping\AppErrorMap.cs" />
+    <Compile Include="Migrations\MigrationConfiguration.cs" />
     <Compile Include="Constants\StringConstants.cs" />
     <Compile Include="Enumerators\PostalAddressType.cs" />
     <Compile Include="Enumerators\RecordStatus.cs" />
@@ -250,40 +348,35 @@
     <Compile Include="Hashing\MurmurHash3.cs" />
     <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="Initializers\ApplicationDbContextInitializer.cs" />
-    <Compile Include="Interfaces\IAddressable.cs" />
-    <Compile Include="Interfaces\IBaseModel.cs" />
-    <Compile Include="Interfaces\IBillable.cs" />
-    <Compile Include="Interfaces\IDescriptive.cs" />
-    <Compile Include="Interfaces\IDisplayable.cs" />
-    <Compile Include="Interfaces\IEntityTypeable.cs" />
-    <Compile Include="Interfaces\IHomeable.cs" />
-    <Compile Include="Interfaces\IMailable.cs" />
-    <Compile Include="Interfaces\INamable.cs" />
-    <Compile Include="Interfaces\IPersonable.cs" />
-    <Compile Include="Interfaces\IPersonalInfoable.cs" />
-    <Compile Include="Interfaces\IPostalAddressable.cs" />
-    <Compile Include="Interfaces\IRatable.cs" />
-    <Compile Include="Interfaces\IShippable.cs" />
-    <Compile Include="Interfaces\IStatusable.cs" />
-    <Compile Include="Interfaces\IIdentifiable.cs" />
-    <Compile Include="Interfaces\IModifiable.cs" />
-    <Compile Include="Interfaces\ITitled.cs" />
-    <Compile Include="Interfaces\IUserable.cs" />
-    <Compile Include="Interfaces\IUserInfoable.cs" />
-    <Compile Include="Interfaces\IVersionable.cs" />
+    <Compile Include="Interfaces\Binding\IBaseModel.cs" />
+    <Compile Include="Interfaces\Base\IEntityType.cs" />
+    <Compile Include="Interfaces\Base\IIdentifier.cs" />
     <Compile Include="Managers\ApplicationSignInManager.cs" />
     <Compile Include="Managers\ApplicationUserManager.cs" />
     <Compile Include="Configurations\BundleConfig.cs" />
     <Compile Include="Configurations\FilterConfig.cs" />
     <Compile Include="Models\Base\BaseModel.cs" />
+    <Compile Include="Models\Mapping\TertiaryCategoryMap.cs" />
+    <Compile Include="Models\Mapping\VehicleMap.cs" />
+    <Compile Include="Models\Mapping\WorkOrderItemMap.cs" />
+    <Compile Include="Models\Mapping\ComponentMap.cs" />
+    <Compile Include="Models\Mapping\EngineMap.cs" />
+    <Compile Include="Models\Mapping\InformationMap.cs" />
+    <Compile Include="Models\Mapping\InventoryMap.cs" />
+    <Compile Include="Models\Mapping\ManufacturerMap.cs" />
+    <Compile Include="Models\Mapping\OrderMap.cs" />
+    <Compile Include="Models\Mapping\PartMap.cs" />
+    <Compile Include="Models\Mapping\PartOrderItemMap.cs" />
+    <Compile Include="Models\Mapping\SubCategoryMap.cs" />
+    <Compile Include="Models\Mapping\CategoryMap.cs" />
     <Compile Include="Models\Mapping\AppointmentMap.cs" />
-    <Compile Include="Models\Mapping\ApplicationUserMap.cs" />
-    <Compile Include="Models\Mapping\PersonalInfoMap.cs" />
+    <Compile Include="Models\Mapping\UserMap.cs" />
     <Compile Include="Models\Mapping\ImageMap.cs" />
     <Compile Include="Models\Mapping\ProjectMap.cs" />
     <Compile Include="Models\Mapping\PostalAddressMap.cs" />
-    <Compile Include="Models\Mapping\TaskMap.cs" />
-    <Compile Include="Models\Mapping\UserInfoMap.cs" />
+    <Compile Include="Models\Mapping\StepMap.cs" />
+    <Compile Include="Models\Base\ClientInfo.cs" />
+    <Compile Include="Models\View\HomeViewModel.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Configurations\RouteConfig.cs" />
     <Compile Include="Services\SmsService.cs" />
@@ -303,7 +396,6 @@
     <Compile Include="Models\View\FactorViewModel.cs" />
     <Compile Include="Models\View\ForgotPasswordViewModel.cs" />
     <Compile Include="Models\View\ForgotViewModel.cs" />
-    <Compile Include="Models\Binding\ApplicationUser.cs" />
     <Compile Include="Models\View\LoginViewModel.cs" />
     <Compile Include="Models\View\ManageLoginsViewModel.cs" />
     <Compile Include="Models\View\IndexViewModel.cs" />
@@ -392,6 +484,10 @@
     <Content Include="Content\ionicons.css" />
     <Content Include="Content\ionicons.min.css">
       <DependentUpon>ionicons.css</DependentUpon>
+    </Content>
+    <Content Include="Content\normalize.css" />
+    <Content Include="Content\normalize.min.css">
+      <DependentUpon>normalize.css</DependentUpon>
     </Content>
     <Content Include="Content\Site.min.css">
       <DependentUpon>Site.css</DependentUpon>
@@ -915,6 +1011,12 @@
     <Content Include="Scripts\ai.0.15.0-build58334.min.js">
       <DependentUpon>ai.0.15.0-build58334.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\App\Functions.min.js">
+      <DependentUpon>Functions.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\App\Variables.min.js">
+      <DependentUpon>Variables.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\bootstrap-hover-dropdown.js" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -977,10 +1079,13 @@
     <Content Include="Content\Fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Mvc.sitemap" />
-    <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Mvc.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Administration\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\bootstrap-hover-dropdown.min.js">
       <DependentUpon>bootstrap-hover-dropdown.js</DependentUpon>
     </Content>
@@ -1007,6 +1112,7 @@
     <Content Include="Scripts\fullcalendar.min.js">
       <DependentUpon>fullcalendar.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\App\Functions.js" />
     <Content Include="Scripts\gcal.js" />
     <Content Include="Content\Fonts\bebasneue-webfont.eot" />
     <Content Include="Content\Fonts\bebasneue-webfont.ttf" />
@@ -1031,77 +1137,7 @@
     <Content Include="Content\Fonts\fontawesome-webfont.woff" />
     <Content Include="Content\Fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\Fonts\fontawesome-webfont.eot" />
-    <Content Include="Areas\Administration\Views\UserInfo\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\UserInfo\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\UserInfo\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\UserInfo\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\UserInfo\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\User\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\User\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\User\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\User\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\User\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\Appointment\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\Appointment\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\Appointment\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\Appointment\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\Appointment\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\AppointmentImage\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\AppointmentImage\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\AppointmentImage\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\AppointmentImage\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\AppointmentImage\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\AppointmentTask\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\AppointmentTask\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\AppointmentTask\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\AppointmentTask\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\AppointmentTask\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\Images\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\Images\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\Images\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\Images\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\Images\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\PersonalInfo\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\PersonalInfo\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\PersonalInfo\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\PersonalInfo\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\PersonalInfo\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\PostalAddress\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\PostalAddress\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\PostalAddress\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\PostalAddress\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\PostalAddress\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\Project\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\Project\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\Project\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\Project\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\Project\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectAppointment\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectAppointment\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectAppointment\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectAppointment\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectAppointment\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectImage\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectImage\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectImage\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectImage\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectImage\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectTask\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectTask\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectTask\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectTask\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\ProjectTask\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\Task\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\Task\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\Task\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\Task\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\Task\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\TaskImage\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\TaskImage\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\TaskImage\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\TaskImage\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\TaskImage\Index.cshtml" />
-    <None Include="bundleconfig.json" />
+    <Content Include="Areas\Administration\Views\Home\Index.cshtml" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1156,6 +1192,7 @@
     <Content Include="Scripts\isotope.min.min.js">
       <DependentUpon>isotope.min.js</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1452,14 +1489,15 @@
     <Content Include="Scripts\sammy-0.7.5.min.js">
       <DependentUpon>sammy-0.7.5.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\site.js" />
-    <Content Include="Scripts\site.min.js">
+    <Content Include="Scripts\App\site.js" />
+    <Content Include="Scripts\App\site.min.js">
       <DependentUpon>site.js</DependentUpon>
     </Content>
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js">
       <DependentUpon>toastr.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\App\Variables.js" />
     <Content Include="Scripts\wow.js" />
     <Content Include="Scripts\wow.min.js">
       <DependentUpon>wow.js</DependentUpon>
@@ -1503,22 +1541,20 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <None Include="Properties\PublishProfiles\ANTHONY-SERVER.pubxml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\Administration\Views\Home\" />
-    <Folder Include="Attributes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -1527,6 +1563,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>

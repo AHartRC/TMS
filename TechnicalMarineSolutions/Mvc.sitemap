@@ -4,23 +4,17 @@
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
 	<mvcSiteMapNode area="" controller="Home" action="Index" title="Home" description="The home page of Technical Marine Solutions' website">
-		<mvcSiteMapNode area="" controller="Home" action="About" title="About" description="Find out more information about Technical Marine Solutions"/>
-		<mvcSiteMapNode area="" controller="Home" action="Contact" title="Contact" description="Click here to get ahold of Technical Marine Solutions"/>
-		<mvcSiteMapNode area="Administration" controller="Home" action="Index" title="Administration" description="The Administrator's Dashboard">
-			<mvcSiteMapNode area="Administration" controller="Appointment" action="Index" title="Appointments" description="Appointments"/>
-			<mvcSiteMapNode area="Administration" controller="AppointmentImage" action="Index" title="Appointment Images" description="Images associated with Appointments"/>
-			<mvcSiteMapNode area="Administration" controller="AppointmentTask" action="Index" title="Appointment Tasks" description="Tasks associated with Appointments"/>
-			<mvcSiteMapNode area="Administration" controller="Images" action="Index" title="Images" description="(TESTING)"/>
-			<mvcSiteMapNode area="Administration" controller="PersonalInfo" action="Index" title="Personal Information" description="Personal Information"/>
-			<mvcSiteMapNode area="Administration" controller="PostalAddress" action="Index" title="Postal Addresses" description="Postal Addresses"/>
-			<mvcSiteMapNode area="Administration" controller="ProjectAppointment" action="Index" title="Project Appointments" description="Appointments associated with Projects"/>
-			<mvcSiteMapNode area="Administration" controller="Project" action="Index" title="Projects" description="Projects"/>
-			<mvcSiteMapNode area="Administration" controller="ProjectImage" action="Index" title="Project Images" description="Images associated with Projects"/>
-			<mvcSiteMapNode area="Administration" controller="ProjectTask" action="Index" title="Project Tasks" description="Tasks associated with Projects"/>
-			<mvcSiteMapNode area="Administration" controller="Task" action="Index" title="Tasks" description="Tasks"/>
-			<mvcSiteMapNode area="Administration" controller="TaskImage" action="Index" title="Task Images" description="Images associated with Tasks"/>
-			<mvcSiteMapNode area="Administration" controller="User" action="Index" title="Users" description="User Accounts"/>
-			<mvcSiteMapNode area="Administration" controller="UserInfo" action="Index" title="User Information" description="User Information"/>
+		<mvcSiteMapNode area="Administration" controller="Home" action="Index" title="Administration" description="The Administrator's Dashboard" roles="Administrator">
+			<mvcSiteMapNode area="Administration" controller="People" action="Index" title="Personal Information" description="Personal Information"/>
+			<mvcSiteMapNode area="Administration" controller="Addresses" action="Index" title="Postal Addresses" description="Postal Addresses"/>
+			<mvcSiteMapNode area="Administration" controller="Projects" action="Index" title="Projects" description="Projects"/>
+			<mvcSiteMapNode area="Administration" controller="Tasks" action="Index" title="Tasks" description="Tasks"/>
+      <mvcSiteMapNode area="Administration" controller="Appointments" action="Index" title="Appointments" description="Appointments"/>
+      <mvcSiteMapNode area="Administration" controller="Images" action="Index" title="Images" description="Images that have been uploaded so far"/>
+			<mvcSiteMapNode area="Administration" controller="ApplicationUsers" action="Index" title="Users" description="User Accounts"/>
+			<mvcSiteMapNode area="Administration" controller="Users" action="Index" title="User Information" description="User Information"/>
 		</mvcSiteMapNode>
+    <mvcSiteMapNode area="" controller="Home" action="About" title="About" description="Find out more information about Technical Marine Solutions"/>
+    <mvcSiteMapNode area="" controller="Home" action="Contact" title="Contact" description="Click here to get ahold of Technical Marine Solutions"/>
 	</mvcSiteMapNode>
 </mvcSiteMap>

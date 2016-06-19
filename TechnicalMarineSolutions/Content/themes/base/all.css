@@ -9,5 +9,5 @@
  * http://api.jqueryui.com/category/theming/
  */
 
-@import url('themes/base/base.css');
-@import url('themes/base/theme.css');
+@import url('base.css');
+@import url('theme.css');

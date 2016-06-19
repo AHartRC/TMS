@@ -1,30 +1,32 @@
-﻿#region Library Imports
-
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using TechnicalMarineSolutions.Managers;
-using TechnicalMarineSolutions.Models.Binding;
-using TechnicalMarineSolutions.Models.Context;
-using TechnicalMarineSolutions.Models.View;
-
-#endregion
-
-namespace TechnicalMarineSolutions.Controllers
+﻿namespace TechnicalMarineSolutions.Controllers
 {
+	#region Library Imports
+
+	using System.Collections.Generic;
+	using System.Data.Entity;
+	using System.Linq;
+	using System.Threading.Tasks;
+	using System.Web;
+	using System.Web.Mvc;
+	using Microsoft.AspNet.Identity;
+	using Microsoft.AspNet.Identity.Owin;
+	using Microsoft.Owin.Security;
+	using TechnicalMarineSolutions.Attributes;
+	using TechnicalMarineSolutions.Managers;
+	using TechnicalMarineSolutions.Models.Binding;
+	using TechnicalMarineSolutions.Models.Context;
+	using TechnicalMarineSolutions.Models.View;
+
+	#endregion
+
 	[Authorize]
+	[ElmahHandleError]
 	public class AccountController : Controller
 	{
 		private ApplicationSignInManager _signInManager;
 		private ApplicationUserManager _userManager;
 
-		public AccountController()
-		{
-		}
+		public AccountController() {}
 
 		public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
 		{
@@ -39,10 +41,7 @@ namespace TechnicalMarineSolutions.Controllers
 				return _signInManager ?? HttpContext.GetOwinContext()
 													.Get<ApplicationSignInManager>();
 			}
-			private set
-			{
-				_signInManager = value;
-			}
+			private set { _signInManager = value; }
 		}
 
 		public ApplicationUserManager UserManager
@@ -50,12 +49,9 @@ namespace TechnicalMarineSolutions.Controllers
 			get
 			{
 				return _userManager ?? HttpContext.GetOwinContext()
-												.GetUserManager<ApplicationUserManager>();
+												  .GetUserManager<ApplicationUserManager>();
 			}
-			private set
-			{
-				_userManager = value;
-			}
+			private set { _userManager = value; }
 		}
 
 		//
@@ -75,13 +71,12 @@ namespace TechnicalMarineSolutions.Controllers
 		public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
 		{
 			if (!ModelState.IsValid)
-			{
 				return View(model);
-			}
 
 			// This doesn't count login failures towards account lockout
 			// To enable password failures to trigger account lockout, change to shouldLockout: true
-			var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+			SignInStatus result =
+				await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 			switch (result)
 			{
 				case SignInStatus.Success:
@@ -89,11 +84,12 @@ namespace TechnicalMarineSolutions.Controllers
 				case SignInStatus.LockedOut:
 					return View("Lockout");
 				case SignInStatus.RequiresVerification:
-					return RedirectToAction("SendCode", new
-														{
-															ReturnUrl = returnUrl,
-															model.RememberMe
-														});
+					return RedirectToAction("SendCode",
+											new
+											{
+												ReturnUrl = returnUrl,
+												model.RememberMe
+											});
 				case SignInStatus.Failure:
 				default:
 					ModelState.AddModelError("", "Invalid login attempt.");
@@ -108,9 +104,7 @@ namespace TechnicalMarineSolutions.Controllers
 		{
 			// Require that the user has already logged in via username/password or external login
 			if (!await SignInManager.HasBeenVerifiedAsync())
-			{
 				return View("Error");
-			}
 			return View(new VerifyCodeViewModel
 						{
 							Provider = provider,
@@ -127,16 +121,15 @@ namespace TechnicalMarineSolutions.Controllers
 		public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
 		{
 			if (!ModelState.IsValid)
-			{
 				return View(model);
-			}
 
 			// The following code protects for brute force attacks against the two factor codes. 
 			// If a user enters incorrect codes for a specified amount of time then the user account 
 			// will be locked out for a specified amount of time. 
 			// You can configure the account lockout settings in IdentityConfig
-			var result =
-				await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, model.RememberMe, model.RememberBrowser);
+			SignInStatus result =
+				await
+				SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, model.RememberMe, model.RememberBrowser);
 			switch (result)
 			{
 				case SignInStatus.Success:
@@ -163,33 +156,30 @@ namespace TechnicalMarineSolutions.Controllers
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
+		[BotCheck]
+		[CaptchaValidator]
 		public async Task<ActionResult> Register(RegisterViewModel model)
 		{
 			if (ModelState.IsValid)
 			{
-				var user = new ApplicationUser
+				User user = new User
 							{
 								UserName = model.Email,
 								Email = model.Email
 							};
-				var result = await UserManager.CreateAsync(user, model.Password);
+				IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 				if (result.Succeeded)
 				{
 					await SignInManager.SignInAsync(user, false, false);
 
-					var userInfo = new User
-									{
-										DisplayName = model.Email,
-										UserId = user.Id
-									};
-					var db = new ApplicationDbContext();
-					var personalInfo = new Person
-										{
-											User = userInfo
-										};
-
-					db.UserInfoes.Add(userInfo);
-					db.PersonalInfoes.Add(personalInfo);
+					Information info = new Information
+									   {
+										   DisplayName = model.Email,
+										   User = user
+									   };
+					user.UserInformation.Add(info);
+					ApplicationDbContext db = new ApplicationDbContext();
+					db.Entry(info).State = EntityState.Added;
 					db.SaveChanges();
 
 					// For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -213,10 +203,8 @@ namespace TechnicalMarineSolutions.Controllers
 		public async Task<ActionResult> ConfirmEmail(string userId, string code)
 		{
 			if (userId == null || code == null)
-			{
 				return View("Error");
-			}
-			var result = await UserManager.ConfirmEmailAsync(userId, code);
+			IdentityResult result = await UserManager.ConfirmEmailAsync(userId, code);
 			return View(result.Succeeded
 							? "ConfirmEmail"
 							: "Error");
@@ -239,7 +227,7 @@ namespace TechnicalMarineSolutions.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var user = await UserManager.FindByNameAsync(model.Email);
+				User user = await UserManager.FindByNameAsync(model.Email);
 				if (user == null || !await UserManager.IsEmailConfirmedAsync(user.Id))
 				{
 					// Don't reveal that the user does not exist or is not confirmed
@@ -272,8 +260,8 @@ namespace TechnicalMarineSolutions.Controllers
 		public ActionResult ResetPassword(string code)
 		{
 			return code == null
-						? View("Error")
-						: View();
+					   ? View("Error")
+					   : View();
 		}
 
 		//
@@ -284,20 +272,16 @@ namespace TechnicalMarineSolutions.Controllers
 		public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
 		{
 			if (!ModelState.IsValid)
-			{
 				return View(model);
-			}
-			var user = await UserManager.FindByNameAsync(model.Email);
+			User user = await UserManager.FindByNameAsync(model.Email);
 			if (user == null)
 			{
 				// Don't reveal that the user does not exist
 				return RedirectToAction("ResetPasswordConfirmation", "Account");
 			}
-			var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+			IdentityResult result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
 			if (result.Succeeded)
-			{
 				return RedirectToAction("ResetPasswordConfirmation", "Account");
-			}
 			AddErrors(result);
 			return View();
 		}
@@ -318,10 +302,14 @@ namespace TechnicalMarineSolutions.Controllers
 		public ActionResult ExternalLogin(string provider, string returnUrl)
 		{
 			// Request a redirect to the external login provider
-			return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new
-																								{
-																									ReturnUrl = returnUrl
-																								}));
+			return new ChallengeResult(provider,
+									   Url.Action("ExternalLoginCallback",
+												  "Account",
+												  new
+												  {
+													  ReturnUrl =
+													  returnUrl
+												  }));
 		}
 
 		//
@@ -329,18 +317,16 @@ namespace TechnicalMarineSolutions.Controllers
 		[AllowAnonymous]
 		public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
 		{
-			var userId = await SignInManager.GetVerifiedUserIdAsync();
+			string userId = await SignInManager.GetVerifiedUserIdAsync();
 			if (userId == null)
-			{
 				return View("Error");
-			}
-			var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
-			var factorOptions = userFactors.Select(purpose => new SelectListItem
-															{
-																Text = purpose,
-																Value = purpose
-															})
-											.ToList();
+			IList<string> userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
+			List<SelectListItem> factorOptions = userFactors.Select(purpose => new SelectListItem
+																			   {
+																				   Text = purpose,
+																				   Value = purpose
+																			   })
+															.ToList();
 			return View(new SendCodeViewModel
 						{
 							Providers = factorOptions,
@@ -357,21 +343,18 @@ namespace TechnicalMarineSolutions.Controllers
 		public async Task<ActionResult> SendCode(SendCodeViewModel model)
 		{
 			if (!ModelState.IsValid)
-			{
 				return View();
-			}
 
 			// Generate the token and send it
 			if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
-			{
 				return View("Error");
-			}
-			return RedirectToAction("VerifyCode", new
-												{
-													Provider = model.SelectedProvider,
-													model.ReturnUrl,
-													model.RememberMe
-												});
+			return RedirectToAction("VerifyCode",
+									new
+									{
+										Provider = model.SelectedProvider,
+										model.ReturnUrl,
+										model.RememberMe
+									});
 		}
 
 		//
@@ -379,14 +362,12 @@ namespace TechnicalMarineSolutions.Controllers
 		[AllowAnonymous]
 		public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
 		{
-			var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+			ExternalLoginInfo loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
 			if (loginInfo == null)
-			{
 				return RedirectToAction("Login");
-			}
 
 			// Sign in the user with this external login provider if the user already has a login
-			var result = await SignInManager.ExternalSignInAsync(loginInfo, false);
+			SignInStatus result = await SignInManager.ExternalSignInAsync(loginInfo, false);
 			switch (result)
 			{
 				case SignInStatus.Success:
@@ -394,21 +375,23 @@ namespace TechnicalMarineSolutions.Controllers
 				case SignInStatus.LockedOut:
 					return View("Lockout");
 				case SignInStatus.RequiresVerification:
-					return RedirectToAction("SendCode", new
-														{
-															ReturnUrl = returnUrl,
-															RememberMe = false
-														});
+					return RedirectToAction("SendCode",
+											new
+											{
+												ReturnUrl = returnUrl,
+												RememberMe = false
+											});
 				case SignInStatus.Failure:
 				default:
 
 					// If the user does not have an account, then prompt the user to create an account
 					ViewBag.ReturnUrl = returnUrl;
 					ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-					return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel
-															{
-																Email = loginInfo.Email
-															});
+					return View("ExternalLoginConfirmation",
+								new ExternalLoginConfirmationViewModel
+								{
+									Email = loginInfo.Email
+								});
 			}
 		}
 
@@ -417,27 +400,24 @@ namespace TechnicalMarineSolutions.Controllers
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
+		public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model,
+																  string returnUrl)
 		{
 			if (User.Identity.IsAuthenticated)
-			{
 				return RedirectToAction("Index", "Manage");
-			}
 
 			if (ModelState.IsValid)
 			{
 				// Get the information about the user from the external login provider
-				var info = await AuthenticationManager.GetExternalLoginInfoAsync();
+				ExternalLoginInfo info = await AuthenticationManager.GetExternalLoginInfoAsync();
 				if (info == null)
-				{
 					return View("ExternalLoginFailure");
-				}
-				var user = new ApplicationUser
+				User user = new User
 							{
 								UserName = model.Email,
 								Email = model.Email
 							};
-				var result = await UserManager.CreateAsync(user);
+				IdentityResult result = await UserManager.CreateAsync(user);
 				if (result.Succeeded)
 				{
 					result = await UserManager.AddLoginAsync(user.Id, info.Login);
@@ -502,33 +482,27 @@ namespace TechnicalMarineSolutions.Controllers
 			get
 			{
 				return HttpContext.GetOwinContext()
-								.Authentication;
+								  .Authentication;
 			}
 		}
 
 		private void AddErrors(IdentityResult result)
 		{
-			foreach (var error in result.Errors)
-			{
+			foreach (string error in result.Errors)
 				ModelState.AddModelError("", error);
-			}
 		}
 
 		private ActionResult RedirectToLocal(string returnUrl)
 		{
 			if (Url.IsLocalUrl(returnUrl))
-			{
 				return Redirect(returnUrl);
-			}
 			return RedirectToAction("Index", "Home");
 		}
 
 		internal class ChallengeResult : HttpUnauthorizedResult
 		{
 			public ChallengeResult(string provider, string redirectUri)
-				: this(provider, redirectUri, null)
-			{
-			}
+				: this(provider, redirectUri, null) {}
 
 			public ChallengeResult(string provider, string redirectUri, string userId)
 			{
@@ -557,16 +531,14 @@ namespace TechnicalMarineSolutions.Controllers
 
 			public override void ExecuteResult(ControllerContext context)
 			{
-				var properties = new AuthenticationProperties
-								{
-									RedirectUri = RedirectUri
-								};
+				AuthenticationProperties properties = new AuthenticationProperties
+													  {
+														  RedirectUri = RedirectUri
+													  };
 				if (UserId != null)
-				{
 					properties.Dictionary[XsrfKey] = UserId;
-				}
 				context.HttpContext.GetOwinContext()
-						.Authentication.Challenge(properties, LoginProvider);
+					   .Authentication.Challenge(properties, LoginProvider);
 			}
 		}
 

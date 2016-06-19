@@ -1,16 +1,17 @@
-#region Library Imports
-
-using System.ComponentModel.DataAnnotations;
-
-#endregion
-
 namespace TechnicalMarineSolutions.Models.View
 {
+	#region Library Imports
+
+	using System.ComponentModel.DataAnnotations;
+
+	#endregion
+
 	public class RegisterViewModel
 	{
 		[Required]
 		[EmailAddress]
-		[Display(Name = "Email")]
+		[StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 11)]
+		[Display(Name = "Email Address")]
 		public string Email
 		{
 			get;

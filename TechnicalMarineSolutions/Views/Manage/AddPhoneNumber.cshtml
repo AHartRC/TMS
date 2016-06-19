@@ -1,4 +1,4 @@
-﻿@model TechnicalMarineSolutions.Models.View.AddPhoneNumberViewModel
+﻿@model AddPhoneNumberViewModel
 @{
 	ViewBag.Title = "Phone Number";
 }
@@ -20,9 +20,9 @@
 								})
 	<div class="form-group">
 		@Html.LabelFor(m => m.Number, new
-									{
-										@class = "col-md-2 control-label"
-									})
+									  {
+										  @class = "col-md-2 control-label"
+									  })
 		<div class="col-md-10">
 			@Html.TextBoxFor(m => m.Number, new
 											{

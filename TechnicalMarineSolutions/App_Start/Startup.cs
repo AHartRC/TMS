@@ -1,15 +1,7 @@
 ﻿#region Library Imports
 
-using System;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
-using Owin;
 using TechnicalMarineSolutions;
-using TechnicalMarineSolutions.Managers;
-using TechnicalMarineSolutions.Models.Binding;
-using TechnicalMarineSolutions.Models.Context;
 
 #endregion
 
@@ -17,6 +9,19 @@ using TechnicalMarineSolutions.Models.Context;
 
 namespace TechnicalMarineSolutions
 {
+	#region Library Imports
+
+	using System;
+	using Microsoft.AspNet.Identity;
+	using Microsoft.AspNet.Identity.Owin;
+	using Microsoft.Owin.Security.Cookies;
+	using Owin;
+	using TechnicalMarineSolutions.Managers;
+	using TechnicalMarineSolutions.Models.Binding;
+	using TechnicalMarineSolutions.Models.Context;
+
+	#endregion
+
 	public class Startup
 	{
 		public void Configuration(IAppBuilder app)
@@ -40,14 +45,22 @@ namespace TechnicalMarineSolutions
 											AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
 											LoginPath = new PathString("/Account/Login"),
 											Provider = new CookieAuthenticationProvider
-														{
-															// Enables the application to validate the security stamp when the user logs in.
-															// This is a security feature which is used when you change a password or add an external login to your account.  
-															OnValidateIdentity =
-																SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
-																																				 TimeSpan.FromMinutes(30),
-																																				(manager, user) => user.GenerateUserIdentityAsync(manager))
-														}
+													   {
+														   // Enables the application to validate the security stamp when the user logs in.
+														   // This is a security feature which is used when you change a password or add an external login to your account.  
+														   OnValidateIdentity =
+															   SecurityStampValidator
+															   .OnValidateIdentity
+															   <ApplicationUserManager, User>(
+																							  TimeSpan
+																								  .FromMinutes
+																								  (30),
+																							  (manager, user)
+																							  =>
+																							  user
+																								  .GenerateUserIdentityAsync
+																								  (manager))
+													   }
 										});
 			app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 

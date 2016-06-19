@@ -43,6 +43,8 @@
 		#region Javascript
 
 		public const string googleAdSenseJS = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+		public const string googleRecaptchaJS = "//www.google.com/recaptcha/api.js";
+		public const string googleRecaptchaVerify = "https://www.google.com/recaptcha/api/siteverify";
 
 		public static string signalRJS =
 			$"//ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-{signalRVersion}{(IsDebug ? "." : ".min.")}js";
@@ -86,7 +88,8 @@
 		public static string jqueryMigrateJS =
 			$"//code.jquery.com/jquery-migrate-{jqueryMigrateVersion}{(IsDebug ? "." : ".min.")}js";
 
-		public static string jqueryUIJS = $"//code.jquery.com/ui/{jqueryUIVersion}/jquery-ui{(IsDebug ? "." : ".min.")}js";
+		public static string jqueryUIJS =
+			$"//code.jquery.com/ui/{jqueryUIVersion}/jquery-ui{(IsDebug ? "." : ".min.")}js";
 
 		public static string jqueryMobileJS =
 			$"//code.jquery.com/mobile/{jqueryMobileVersion}/jquery.mobile-{jqueryMobileVersion}{(IsDebug ? "." : ".min.")}js";
@@ -559,9 +562,14 @@
 		public static string zocialCSS =
 			$"//cdnjs.cloudflare.com/ajax/libs/css-social-buttons/{zocialVersion}/css/zocial{(IsDebug ? "." : ".min.")}css";
 
-		public static string zocialEOT = $"//cdnjs.cloudflare.com/ajax/libs/css-social-buttons/{zocialVersion}/css/zocial.eot";
-		public static string zocialSVG = $"//cdnjs.cloudflare.com/ajax/libs/css-social-buttons/{zocialVersion}/css/zocial.svg";
-		public static string zocialTTF = $"//cdnjs.cloudflare.com/ajax/libs/css-social-buttons/{zocialVersion}/css/zocial.ttf";
+		public static string zocialEOT =
+			$"//cdnjs.cloudflare.com/ajax/libs/css-social-buttons/{zocialVersion}/css/zocial.eot";
+
+		public static string zocialSVG =
+			$"//cdnjs.cloudflare.com/ajax/libs/css-social-buttons/{zocialVersion}/css/zocial.svg";
+
+		public static string zocialTTF =
+			$"//cdnjs.cloudflare.com/ajax/libs/css-social-buttons/{zocialVersion}/css/zocial.ttf";
 
 		public static string zocialWOFF =
 			$"//cdnjs.cloudflare.com/ajax/libs/css-social-buttons/{zocialVersion}/css/zocial.woff";

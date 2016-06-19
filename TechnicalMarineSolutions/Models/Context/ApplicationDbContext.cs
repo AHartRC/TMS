@@ -1,25 +1,28 @@
-#region Library Imports
-
-using System.Data.Entity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using TechnicalMarineSolutions.Models.Binding;
-using TechnicalMarineSolutions.Models.Mapping;
-
-#endregion
-
 namespace TechnicalMarineSolutions.Models.Context
 {
-	public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+	#region Library Imports
+
+	using System.Data.Entity;
+	using System.Data.Entity.ModelConfiguration.Conventions;
+	using Microsoft.AspNet.Identity.EntityFramework;
+	using TechnicalMarineSolutions.Initializers;
+	using TechnicalMarineSolutions.Models.Binding;
+	using TechnicalMarineSolutions.Models.Mapping;
+
+	#endregion
+
+	public class ApplicationDbContext : IdentityDbContext<User>
 	{
-		public ApplicationDbContext()
-			: base("DefaultConnection", false)
+		static ApplicationDbContext()
 		{
+			Database.SetInitializer(new ApplicationDbContextInitializer());
 		}
 
+		public ApplicationDbContext()
+			: base("DefaultConnection", false) {}
+
 		public ApplicationDbContext(string connName)
-			: base(connName, false)
-		{
-		}
+			: base(connName, false) {}
 
 		public static ApplicationDbContext Create()
 		{
@@ -30,24 +33,32 @@ namespace TechnicalMarineSolutions.Models.Context
 		{
 			modelBuilder.HasDefaultSchema("dbo");
 
+			modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
 			#region Table Mappings (Fluent-API Mapping)
 
 			// There should be one map per model that appears in the Models/Binding folder
 
-			modelBuilder.Configurations.Add(new ApplicationUserMap());
-			modelBuilder.Configurations.Add(new UserInfoMap());
-			modelBuilder.Configurations.Add(new PersonalInfoMap());
-			modelBuilder.Configurations.Add(new PostalAddressMap());
-			modelBuilder.Configurations.Add(new TaskMap());
-			modelBuilder.Configurations.Add(new ProjectMap());
+			modelBuilder.Configurations.Add(new AppErrorMap());
 			modelBuilder.Configurations.Add(new AppointmentMap());
-			modelBuilder.Configurations.Add(new ProjectTaskMap());
-			modelBuilder.Configurations.Add(new ProjectAppointmentMap());
-			modelBuilder.Configurations.Add(new AppointmentTaskMap());
+			modelBuilder.Configurations.Add(new CategoryMap());
+			modelBuilder.Configurations.Add(new ComponentMap());
+			modelBuilder.Configurations.Add(new EngineMap());
 			modelBuilder.Configurations.Add(new ImageMap());
-			modelBuilder.Configurations.Add(new TaskImageMap());
-			modelBuilder.Configurations.Add(new ProjectImageMap());
-			modelBuilder.Configurations.Add(new AppointmentImageMap());
+			modelBuilder.Configurations.Add(new InformationMap());
+			modelBuilder.Configurations.Add(new InventoryMap());
+			modelBuilder.Configurations.Add(new ManufacturerMap());
+			modelBuilder.Configurations.Add(new OrderMap());
+			modelBuilder.Configurations.Add(new PartMap());
+			modelBuilder.Configurations.Add(new PartOrderItemMap());
+			modelBuilder.Configurations.Add(new PostalAddressMap());
+			modelBuilder.Configurations.Add(new ProjectMap());
+			modelBuilder.Configurations.Add(new StepMap());
+			modelBuilder.Configurations.Add(new SubCategoryMap());
+			modelBuilder.Configurations.Add(new TertiaryCategoryMap());
+			modelBuilder.Configurations.Add(new UserMap());
+			modelBuilder.Configurations.Add(new VehicleMap());
+			modelBuilder.Configurations.Add(new WorkOrderItemMap());
 
 			#endregion Table Mappings (Fluent-API Mapping)
 
@@ -56,43 +67,7 @@ namespace TechnicalMarineSolutions.Models.Context
 
 		#region Tables
 
-		public virtual DbSet<AppointmentImage> AppointmentImages
-		{
-			get;
-			set;
-		}
-
-		public virtual DbSet<Image> Images
-		{
-			get;
-			set;
-		}
-
-		public virtual DbSet<ProjectImage> ProjectImages
-		{
-			get;
-			set;
-		}
-
-		public virtual DbSet<TaskImage> TaskImages
-		{
-			get;
-			set;
-		}
-
-		public virtual DbSet<Person> PersonalInfoes
-		{
-			get;
-			set;
-		}
-
-		public virtual DbSet<PostalAddress> PostalAddresses
-		{
-			get;
-			set;
-		}
-
-		public virtual DbSet<User> UserInfoes
+		public virtual DbSet<AppError> Errors
 		{
 			get;
 			set;
@@ -104,7 +79,85 @@ namespace TechnicalMarineSolutions.Models.Context
 			set;
 		}
 
-		public virtual DbSet<AppointmentTask> AppointmentTasks
+		public virtual DbSet<Category> Categories
+		{
+			get;
+			set;
+		}
+
+		public virtual DbSet<SubCategory> SubCategories
+		{
+			get;
+			set;
+		}
+
+		public virtual DbSet<TertiaryCategory> TertiaryCategories
+		{
+			get;
+			set;
+		}
+
+		public virtual DbSet<Component> Components
+		{
+			get;
+			set;
+		}
+
+		public virtual DbSet<Engine> Engines
+		{
+			get;
+			set;
+		}
+
+		public virtual DbSet<Image> Images
+		{
+			get;
+			set;
+		}
+
+		public virtual DbSet<Information> UserInformation
+		{
+			get;
+			set;
+		}
+
+		public virtual DbSet<Inventory> Inventories
+		{
+			get;
+			set;
+		}
+
+		public virtual DbSet<Manufacturer> Manufacturers
+		{
+			get;
+			set;
+		}
+
+		public virtual DbSet<Order> Orders
+		{
+			get;
+			set;
+		}
+
+		public virtual DbSet<PartOrderItem> PartOrderItems
+		{
+			get;
+			set;
+		}
+
+		public virtual DbSet<WorkOrderItem> WorkOrderItems
+		{
+			get;
+			set;
+		}
+
+		public virtual DbSet<Part> Parts
+		{
+			get;
+			set;
+		}
+
+		public virtual DbSet<PostalAddress> PostalAddresses
 		{
 			get;
 			set;
@@ -116,19 +169,13 @@ namespace TechnicalMarineSolutions.Models.Context
 			set;
 		}
 
-		public virtual DbSet<ProjectAppointment> ProjectAppointments
+		public virtual DbSet<Step> Steps
 		{
 			get;
 			set;
 		}
 
-		public virtual DbSet<ProjectTask> ProjectTasks
-		{
-			get;
-			set;
-		}
-
-		public virtual DbSet<Task> Tasks
+		public virtual DbSet<Vehicle> Vehicles
 		{
 			get;
 			set;

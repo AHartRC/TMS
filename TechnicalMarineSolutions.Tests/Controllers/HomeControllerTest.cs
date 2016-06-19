@@ -1,13 +1,13 @@
-﻿#region Library Imports
-
-using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TechnicalMarineSolutions.Controllers;
-
-#endregion
-
-namespace TechnicalMarineSolutions.Tests.Controllers
+﻿namespace TechnicalMarineSolutions.Tests.Controllers
 {
+	#region Library Imports
+
+	using System.Web.Mvc;
+	using Microsoft.VisualStudio.TestTools.UnitTesting;
+	using TechnicalMarineSolutions.Controllers;
+
+	#endregion
+
 	[TestClass]
 	public class HomeControllerTest
 	{
@@ -15,10 +15,10 @@ namespace TechnicalMarineSolutions.Tests.Controllers
 		public void Index()
 		{
 			// Arrange
-			var controller = new HomeController();
+			HomeController controller = new HomeController();
 
 			// Act
-			var result = controller.Index() as ViewResult;
+			ViewResult result = controller.Index() as ViewResult;
 
 			// Assert
 			Assert.IsNotNull(result);
@@ -28,10 +28,10 @@ namespace TechnicalMarineSolutions.Tests.Controllers
 		public void About()
 		{
 			// Arrange
-			var controller = new HomeController();
+			HomeController controller = new HomeController();
 
 			// Act
-			var result = controller.About() as ViewResult;
+			ViewResult result = controller.About() as ViewResult;
 
 			// Assert
 			Assert.AreEqual("Your application description page.", result.ViewBag.Message);
@@ -41,10 +41,10 @@ namespace TechnicalMarineSolutions.Tests.Controllers
 		public void Contact()
 		{
 			// Arrange
-			var controller = new HomeController();
+			HomeController controller = new HomeController();
 
 			// Act
-			var result = controller.Contact() as ViewResult;
+			ViewResult result = controller.Contact() as ViewResult;
 
 			// Assert
 			Assert.IsNotNull(result);

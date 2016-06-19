@@ -1,16 +1,17 @@
-﻿#region Library Imports
-
-using System.Web.Mvc;
-
-#endregion
-
-namespace TechnicalMarineSolutions.Controllers
+﻿namespace TechnicalMarineSolutions.Controllers
 {
+	#region Library Imports
+
+	using System.Web.Mvc;
+	using TechnicalMarineSolutions.Models.View;
+
+	#endregion
+
 	public class HomeController : Controller
 	{
 		public ActionResult Index()
 		{
-			return View();
+			return View(new HomeViewModel());
 		}
 
 		public ActionResult About()

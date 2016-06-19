@@ -18,9 +18,9 @@
 	font-weight: normal;
 	src: url('~/Content/Fonts/flexslider-icon.eot');
 	src: url('~/Content/Fonts/flexslider-icon.eot?#iefix') format('embedded-opentype'),
-		url('~/Content/Fonts/flexslider-icon.woff') format('woff'),
-		url('~/Content/Fonts/flexslider-icon.ttf') format('truetype'),
-		url('~/Content/Fonts/flexslider-icon.svg#flexslider-icon') format('svg');
+		 url('~/Content/Fonts/flexslider-icon.woff') format('woff'),
+		 url('~/Content/Fonts/flexslider-icon.ttf') format('truetype'),
+		 url('~/Content/Fonts/flexslider-icon.svg#flexslider-icon') format('svg');
 }
 
 /* ====================================================================================================================

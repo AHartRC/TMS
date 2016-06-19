@@ -1,12 +1,12 @@
-﻿#region Library Imports
-
-using System.Collections.Generic;
-using Microsoft.AspNet.Identity;
-
-#endregion
-
-namespace TechnicalMarineSolutions.Models.View
+﻿namespace TechnicalMarineSolutions.Models.View
 {
+	#region Library Imports
+
+	using System.Collections.Generic;
+	using Microsoft.AspNet.Identity;
+
+	#endregion
+
 	public class IndexViewModel
 	{
 		public bool HasPassword

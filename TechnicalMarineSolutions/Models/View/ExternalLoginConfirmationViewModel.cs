@@ -1,11 +1,11 @@
-﻿#region Library Imports
-
-using System.ComponentModel.DataAnnotations;
-
-#endregion
-
-namespace TechnicalMarineSolutions.Models.View
+﻿namespace TechnicalMarineSolutions.Models.View
 {
+	#region Library Imports
+
+	using System.ComponentModel.DataAnnotations;
+
+	#endregion
+
 	public class ExternalLoginConfirmationViewModel
 	{
 		[Required]

@@ -1,11 +1,11 @@
-﻿#region Library Imports
-
-using System;
-
-#endregion
-
-namespace TechnicalMarineSolutions.Enumerators
+﻿namespace TechnicalMarineSolutions.Enumerators
 {
+	#region Library Imports
+
+	using System;
+
+	#endregion
+
 	[Flags]
 	public enum RecordStatus
 	{

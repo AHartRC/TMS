@@ -1,11 +1,11 @@
-﻿#region Library Imports
-
-using System.Web.Mvc;
-
-#endregion
-
-namespace TechnicalMarineSolutions.Areas.Administration.Controllers
+﻿namespace TechnicalMarineSolutions.Areas.Administration.Controllers
 {
+	#region Library Imports
+
+	using System.Web.Mvc;
+
+	#endregion
+
 	public class HomeController : Controller
 	{
 		// GET: Administration/Home
