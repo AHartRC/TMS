@@ -15,10 +15,8 @@
 	{
 		public Inventory()
 		{
-			Errors = new HashSet<AppError>();
-			Images = new HashSet<Image>();
-			WorkOrderItems = new HashSet<WorkOrderItem>();
 		}
+
 		#region Implementation of IPartable
 
 		/// <summary>
@@ -46,7 +44,7 @@
 		/// <summary>
 		///     The ID of the <see cref="ICategoryable.Category" /> Record
 		/// </summary>
-		public long? CategoryId
+		public long CategoryId
 		{
 			get;
 			set;
@@ -68,7 +66,7 @@
 		/// <summary>
 		///     The ID of the <see cref="ISubCategoryable.SubCategory" /> Record
 		/// </summary>
-		public long? SubCategoryId
+		public long SubCategoryId
 		{
 			get;
 			set;
@@ -90,7 +88,7 @@
 		/// <summary>
 		///     The ID of the <see cref="ITertiaryCategoryable.TertiaryCategory" /> Record
 		/// </summary>
-		public long? TertiaryCategoryId
+		public long TertiaryCategoryId
 		{
 			get;
 			set;
@@ -201,7 +199,7 @@
 		///     The Discount Percentage to be applied to <see cref="ICost.Cost" />
 		///     <value>
 		///         <para>The expected value should be already reduced to 0.#</para>
-		///         Values such as 98.6 will be treated as 986%.
+		///         Values such as 98.6 will be treated as 9860%.
 		///     </value>
 		/// </summary>
 		public decimal Discount
@@ -240,32 +238,6 @@
 		///     Notes that are available to administrators and moderators only
 		/// </summary>
 		public string PrivateNotes
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyImageable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Image" /> Records
-		/// </summary>
-		public ICollection<Image> Images
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyWorkOrderItemable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.WorkOrderItem" /> Records
-		/// </summary>
-		public ICollection<WorkOrderItem> WorkOrderItems
 		{
 			get;
 			set;

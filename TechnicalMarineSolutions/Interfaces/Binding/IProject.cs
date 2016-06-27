@@ -17,17 +17,5 @@
 		  IDescription,
 		  IProjectedDuration,
 		  IDuration,
-		  INote,
-		  IManyAppointmentable,
-		  IManyComponentable,
-		  IManyEngineable,
-		  IManyImageable,
-		  IManyInformationable,
-		  IManyManufacturerable,
-		  IManyOrderable,
-		  IManyPartable,
-		  IManyPostalAddressable,
-		  IManyStepable,
-		  IManyVehicleable
-	{ }
+		  INote {}
 }

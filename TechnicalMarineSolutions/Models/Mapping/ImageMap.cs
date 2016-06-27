@@ -13,7 +13,7 @@
 		{
 			ToTable("Image", "Resource");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

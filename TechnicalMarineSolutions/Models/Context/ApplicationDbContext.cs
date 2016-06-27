@@ -33,7 +33,7 @@ namespace TechnicalMarineSolutions.Models.Context
 		{
 			modelBuilder.HasDefaultSchema("dbo");
 
-			modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+			//modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
 			#region Table Mappings (Fluent-API Mapping)
 

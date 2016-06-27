@@ -101,11 +101,18 @@
 			return output;
 		}
 
-		public static string GetHash(string source)
+		public static string GetHashAsString(string source)
 		{
 			byte[] hash = ComputeHash(source);
-			ulong resultA = BitConverter.ToUInt64(hash, 0);
-			return $"{resultA}";
+			ulong result = BitConverter.ToUInt64(hash, 0);
+			return $"{result}";
+		}
+
+		public static long GetHashAsLong(string source)
+		{
+			byte[] hash = ComputeHash(source);
+			long result = BitConverter.ToInt64(hash, 0);
+			return result;
 		}
 
 		private void ProcessBytes(byte[] bb)

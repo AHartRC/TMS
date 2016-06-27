@@ -11,7 +11,7 @@
 		/// <summary>
 		///     The ID of the <see cref="Appointment" /> Record
 		/// </summary>
-		long? AppointmentId
+		long AppointmentId
 		{
 			get;
 			set;

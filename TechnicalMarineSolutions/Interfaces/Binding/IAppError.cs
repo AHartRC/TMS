@@ -8,24 +8,5 @@
 	#endregion
 
 	public interface IAppError
-		: IElmahError,
-		  IManyAppointmentable,
-		  IManyCategoryable,
-		  IManyComponentable,
-		  IManyEngineable,
-		  IManyImageable,
-		  IManyInformationable,
-		  IManyInventoryable,
-		  IManyManufacturerable,
-		  IManyOrderable,
-		  IManyPartable,
-		  IManyPartOrderItemable,
-		  IManyPostalAddressable,
-		  IManyProjectable,
-		  IManyStepable,
-		  IManySubCategoryable,
-		  IManyTertiaryCategoryable,
-		  IManyUserable,
-		  IManyVehicleable,
-		  IManyWorkOrderItemable {}
+		: IElmahError {}
 }

@@ -14,9 +14,8 @@
 	{
 		public WorkOrderItem()
 		{
-			Errors = new HashSet<AppError>();
-			Images = new HashSet<Image>();
 		}
+
 		#region Implementation of IOrderable
 
 		/// <summary>
@@ -89,7 +88,7 @@
 		///     The Discount Percentage to be applied to <see cref="ICost.Cost" />
 		///     <value>
 		///         <para>The expected value should be already reduced to 0.#</para>
-		///         Values such as 98.6 will be treated as 986%.
+		///         Values such as 98.6 will be treated as 9860%.
 		///     </value>
 		/// </summary>
 		public decimal Discount
@@ -128,19 +127,6 @@
 		///     Notes that are available to administrators and moderators only
 		/// </summary>
 		public string PrivateNotes
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyImageable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Image" /> Records
-		/// </summary>
-		public ICollection<Image> Images
 		{
 			get;
 			set;

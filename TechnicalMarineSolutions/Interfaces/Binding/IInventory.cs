@@ -18,8 +18,5 @@
 		  IRetailItem,
 		  ICost,
 		  IQuantity,
-		  INote,
-		  IManyImageable,
-		  IManyWorkOrderItemable
-	{ }
+		  INote {}
 }

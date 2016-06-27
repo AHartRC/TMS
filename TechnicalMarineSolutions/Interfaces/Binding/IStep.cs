@@ -15,11 +15,7 @@
 		  IName,
 		  IDescription,
 		  IDuration,
-		  INote,
-		  IManyAppointmentable,
-		  IManyImageable,
-		  IManyInformationable,
-		  IManyProjectable
+		  INote
 	{
 		/// <summary>
 		///     The level of difficulty of the step

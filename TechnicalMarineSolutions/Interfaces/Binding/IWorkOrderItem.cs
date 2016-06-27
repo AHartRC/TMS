@@ -3,7 +3,6 @@
 	#region Library Imports
 
 	using TechnicalMarineSolutions.Interfaces.Base;
-	using TechnicalMarineSolutions.Interfaces.Mapping.Many;
 	using TechnicalMarineSolutions.Interfaces.Mapping.One;
 
 	#endregion
@@ -15,7 +14,5 @@
 		  IQuantity,
 		  ICost,
 		  IDescription,
-		  INote,
-		  IManyImageable
-	{ }
+		  INote {}
 }

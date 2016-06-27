@@ -11,7 +11,7 @@
 		/// <summary>
 		///     The ID of the <see cref="Engine" /> Record
 		/// </summary>
-		long? EngineId
+		long EngineId
 		{
 			get;
 			set;

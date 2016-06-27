@@ -7,5 +7,5 @@
 
 	#endregion
 
-	public interface IBaseModel : IIdentifier, IEntityType, IRecordStatus, IManyAppErrorable {}
+	public interface IBaseModel : IIdentifier, IEntityType, IRecordStatus {}
 }

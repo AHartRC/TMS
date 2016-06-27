@@ -13,7 +13,7 @@
 		{
 			ToTable("PostalAddress", "Location");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

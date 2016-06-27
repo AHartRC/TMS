@@ -13,7 +13,7 @@
 		{
 			ToTable("WorkOrderItem", "Order");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

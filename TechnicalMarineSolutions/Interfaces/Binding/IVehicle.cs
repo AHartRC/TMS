@@ -17,14 +17,7 @@
 		  IName,
 		  ITitle,
 		  IDescription,
-		  INote,
-		  IManyAppointmentable,
-		  IManyComponentable,
-		  IManyEngineable,
-		  IManyImageable,
-		  IManyInformationable,
-		  IManyPartable,
-		  IManyProjectable
+		  INote
 	{
 		/// <summary>
 		///     The unique Vehicle Identification Number

@@ -9,6 +9,9 @@
 
 	public interface IManyAppErrorable
 	{
+		/// <summary>
+		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.AppError" /> Records
+		/// </summary>
 		ICollection<AppError> Errors
 		{
 			get;

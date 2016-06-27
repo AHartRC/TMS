@@ -11,7 +11,7 @@
 		/// <summary>
 		///     The ID of the <see cref="Image" /> Record
 		/// </summary>
-		long? ImageId
+		long ImageId
 		{
 			get;
 			set;

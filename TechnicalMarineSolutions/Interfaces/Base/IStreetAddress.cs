@@ -1,6 +1,10 @@
 ﻿namespace TechnicalMarineSolutions.Interfaces.Base
 {
+	#region Library Imports
+
 	using TechnicalMarineSolutions.Enumerators;
+
+	#endregion
 
 	public interface IStreetAddress
 	{

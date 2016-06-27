@@ -15,7 +15,7 @@
 		/// <summary>
 		///     The ID of the <see cref="Manufacturer" /> Record
 		/// </summary>
-		long? ManufacturerId
+		long ManufacturerId
 		{
 			get;
 			set;

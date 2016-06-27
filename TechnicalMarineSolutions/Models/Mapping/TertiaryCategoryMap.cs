@@ -13,7 +13,7 @@
 		{
 			ToTable("TertiaryCategory", "Schema");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

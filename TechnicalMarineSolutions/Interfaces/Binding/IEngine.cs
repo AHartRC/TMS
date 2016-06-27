@@ -18,14 +18,5 @@
 		  IName,
 		  ITitle,
 		  IDescription,
-		  INote,
-		  IManyAppointmentable,
-		  IManyComponentable,
-		  IManyImageable,
-		  IManyInformationable,
-		  IManyOrderable,
-		  IManyPartable,
-		  IManyProjectable,
-		  IManyVehicleable
-	{ }
+		  INote {}
 }

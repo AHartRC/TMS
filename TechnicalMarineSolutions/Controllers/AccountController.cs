@@ -172,16 +172,6 @@
 				{
 					await SignInManager.SignInAsync(user, false, false);
 
-					Information info = new Information
-									   {
-										   DisplayName = model.Email,
-										   User = user
-									   };
-					user.UserInformation.Add(info);
-					ApplicationDbContext db = new ApplicationDbContext();
-					db.Entry(info).State = EntityState.Added;
-					db.SaveChanges();
-
 					// For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
 					// Send an email with this link
 					// string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

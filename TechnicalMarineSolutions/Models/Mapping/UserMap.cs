@@ -13,7 +13,7 @@
 		{
 			ToTable("AspNetUsers", "dbo");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

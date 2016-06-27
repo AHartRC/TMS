@@ -11,7 +11,7 @@
 		/// <summary>
 		///     The ID of the <see cref="WorkOrderItem" /> Record
 		/// </summary>
-		long? WorkOrderItemId
+		long WorkOrderItemId
 		{
 			get;
 			set;

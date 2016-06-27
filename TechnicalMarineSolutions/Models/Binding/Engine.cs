@@ -15,22 +15,14 @@
 	{
 		public Engine()
 		{
-			Appointments = new HashSet<Appointment>();
-			Components = new HashSet<Component>();
-			Errors = new HashSet<AppError>();
-			Images = new HashSet<Image>();
-			UserInformation = new HashSet<Information>();
-			Orders = new HashSet<Order>();
-			Parts = new HashSet<Part>();
-			Projects = new HashSet<Project>();
-			Vehicles = new HashSet<Vehicle>();
 		}
-	#region Implementation of IManufacturerable
 
-	/// <summary>
-	///     The ID of the <see cref="IManufacturerable.Manufacturer" /> Record
-	/// </summary>
-	public long? ManufacturerId
+		#region Implementation of IManufacturerable
+
+		/// <summary>
+		///     The ID of the <see cref="IManufacturerable.Manufacturer" /> Record
+		/// </summary>
+		public long ManufacturerId
 		{
 			get;
 			set;
@@ -52,7 +44,7 @@
 		/// <summary>
 		///     The ID of the <see cref="ICategoryable.Category" /> Record
 		/// </summary>
-		public long? CategoryId
+		public long CategoryId
 		{
 			get;
 			set;
@@ -74,7 +66,7 @@
 		/// <summary>
 		///     The ID of the <see cref="ISubCategoryable.SubCategory" /> Record
 		/// </summary>
-		public long? SubCategoryId
+		public long SubCategoryId
 		{
 			get;
 			set;
@@ -96,7 +88,7 @@
 		/// <summary>
 		///     The ID of the <see cref="ITertiaryCategoryable.TertiaryCategory" /> Record
 		/// </summary>
-		public long? TertiaryCategoryId
+		public long TertiaryCategoryId
 		{
 			get;
 			set;
@@ -168,7 +160,7 @@
 		///     The Discount Percentage to be applied to <see cref="ICost.Cost" />
 		///     <value>
 		///         <para>The expected value should be already reduced to 0.#</para>
-		///         Values such as 98.6 will be treated as 986%.
+		///         Values such as 98.6 will be treated as 9860%.
 		///     </value>
 		/// </summary>
 		public decimal Discount
@@ -246,110 +238,6 @@
 		///     Notes that are available to administrators and moderators only
 		/// </summary>
 		public string PrivateNotes
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyAppointmentable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Appointment" /> Records
-		/// </summary>
-		public ICollection<Appointment> Appointments
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyComponentable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Component" /> Records
-		/// </summary>
-		public ICollection<Component> Components
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyImageable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Image" /> Records
-		/// </summary>
-		public ICollection<Image> Images
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyInformationable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Information" /> Records
-		/// </summary>
-		public ICollection<Information> UserInformation
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyOrderable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Order" /> Records
-		/// </summary>
-		public ICollection<Order> Orders
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyPartable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Part" /> Records
-		/// </summary>
-		public ICollection<Part> Parts
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyProjectable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Project" /> Records
-		/// </summary>
-		public ICollection<Project> Projects
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyVehicleable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Vehicle" /> Records
-		/// </summary>
-		public ICollection<Vehicle> Vehicles
 		{
 			get;
 			set;

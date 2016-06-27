@@ -3,10 +3,12 @@
 	#region Library Imports
 
 	using System.Web.Mvc;
+	using TechnicalMarineSolutions.Attributes;
 	using TechnicalMarineSolutions.Models.View;
 
 	#endregion
 
+	//[ApplicationDb]
 	public class HomeController : Controller
 	{
 		public ActionResult Index()

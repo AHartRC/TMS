@@ -6,16 +6,12 @@
 
 	#endregion
 
-	#region Library Imports
-
-	#endregion
-
 	public interface ICategoryable
 	{
 		/// <summary>
 		///     The ID of the <see cref="Category" /> Record
 		/// </summary>
-		long? CategoryId
+		long CategoryId
 		{
 			get;
 			set;

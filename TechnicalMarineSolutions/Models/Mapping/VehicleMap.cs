@@ -13,7 +13,7 @@
 		{
 			ToTable("Vehicle", "Asset");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

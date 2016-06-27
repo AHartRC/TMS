@@ -13,7 +13,7 @@
 		{
 			ToTable("Appointment", "Schedule");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

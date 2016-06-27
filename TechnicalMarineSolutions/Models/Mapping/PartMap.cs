@@ -13,7 +13,7 @@
 		{
 			ToTable("Part", "Resource");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

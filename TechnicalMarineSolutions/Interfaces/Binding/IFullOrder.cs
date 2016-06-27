@@ -15,15 +15,5 @@
 		  IPostalAddressable,
 		  ICost,
 		  IDescription,
-		  INote,
-		  IManyAppointmentable,
-		  IManyComponentable,
-		  IManyEngineable,
-		  IManyImageable,
-		  IManyOrderable,
-		  IManyPartOrderItemable,
-		  IManyProjectable,
-		  IManyVehicleable,
-		  IManyWorkOrderItemable
-	{ }
+		  INote {}
 }

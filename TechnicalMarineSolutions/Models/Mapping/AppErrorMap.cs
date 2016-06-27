@@ -13,7 +13,7 @@ namespace TechnicalMarineSolutions.Models.Mapping
 		{
 			ToTable("ELMAH_Error", "dbo");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

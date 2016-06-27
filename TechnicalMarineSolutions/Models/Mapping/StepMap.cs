@@ -13,7 +13,7 @@
 		{
 			ToTable("Step", "Work");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

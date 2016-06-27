@@ -14,19 +14,5 @@
 		  IName,
 		  IAuthor,
 		  IDescription,
-		  INote,
-		  IManyAppointmentable,
-		  IManyCategoryable,
-		  IManyComponentable,
-		  IManyEngineable,
-		  IManyInformationable,
-		  IManyInventoryable,
-		  IManyManufacturerable,
-		  IManyPartable,
-		  IManyPostalAddressable,
-		  IManyProjectable,
-		  IManyStepable,
-		  IManySubCategoryable,
-		  IManyTertiaryCategoryable,
-		  IManyVehicleable {}
+		  INote {}
 }

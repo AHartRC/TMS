@@ -15,7 +15,7 @@
 		/// <summary>
 		///     The ID of the <see cref="Address" /> Record
 		/// </summary>
-		long? AddressId
+		long AddressId
 		{
 			get;
 			set;

@@ -13,7 +13,7 @@
 		{
 			ToTable("Component", "Asset");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

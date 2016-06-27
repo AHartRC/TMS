@@ -13,7 +13,7 @@
 		{
 			ToTable("Project", "Work");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

@@ -14,18 +14,7 @@
 		  IUserable,
 		  IDisplayName,
 		  IFullName,
-		  INote,
-		  IManyAppointmentable,
-		  IManyComponentable,
-		  IManyEngineable,
-		  IManyImageable,
-		  IManyInformationable,
-		  IManyManufacturerable,
-		  IManyOrderable,
-		  IManyPostalAddressable,
-		  IManyProjectable,
-		  IManyStepable,
-		  IManyVehicleable
+		  INote
 	{
 		/// <summary>
 		///     Where the user grew up

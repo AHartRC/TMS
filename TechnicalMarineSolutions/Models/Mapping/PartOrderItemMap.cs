@@ -13,7 +13,7 @@
 		{
 			ToTable("PartOrderItem", "Order");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

@@ -11,7 +11,7 @@
 		/// <summary>
 		///     The ID of the <see cref="PartOrderItem" /> Record
 		/// </summary>
-		long? PartOrderItemId
+		long PartOrderItemId
 		{
 			get;
 			set;

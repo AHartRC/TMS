@@ -13,7 +13,7 @@
 		{
 			ToTable("Category", "Schema");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

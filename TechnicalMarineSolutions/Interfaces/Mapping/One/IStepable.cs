@@ -11,7 +11,7 @@
 		/// <summary>
 		///     The ID of the <see cref="Step" /> Record
 		/// </summary>
-		long? StepId
+		long StepId
 		{
 			get;
 			set;

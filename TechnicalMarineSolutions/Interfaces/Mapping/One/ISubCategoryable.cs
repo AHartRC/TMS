@@ -15,7 +15,7 @@
 		/// <summary>
 		///     The ID of the <see cref="SubCategory" /> Record
 		/// </summary>
-		long? SubCategoryId
+		long SubCategoryId
 		{
 			get;
 			set;

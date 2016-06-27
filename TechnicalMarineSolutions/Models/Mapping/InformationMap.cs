@@ -13,7 +13,7 @@
 		{
 			ToTable("Information", "User");
 
-			MapToStoredProcedures();
+			//MapToStoredProcedures();
 		}
 	}
 }

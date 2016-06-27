@@ -13,22 +13,14 @@
 	{
 		public Manufacturer()
 		{
-			Appointments = new HashSet<Appointment>();
-			Components = new HashSet<Component>();
-			Engines = new HashSet<Engine>();
-			Errors = new HashSet<AppError>();
-			Images = new HashSet<Image>();
-			UserInformation = new HashSet<Information>();
-			Parts = new HashSet<Part>();
-			Projects = new HashSet<Project>();
-			Vehicles = new HashSet<Vehicle>();
 		}
+
 		#region Implementation of IPostalAddressable
 
 		/// <summary>
 		///     The ID of the <see cref="IPostalAddressable.Address" /> Record
 		/// </summary>
-		public long? AddressId
+		public long AddressId
 		{
 			get;
 			set;
@@ -50,7 +42,7 @@
 		/// <summary>
 		///     The ID of the <see cref="ICategoryable.Category" /> Record
 		/// </summary>
-		public long? CategoryId
+		public long CategoryId
 		{
 			get;
 			set;
@@ -72,7 +64,7 @@
 		/// <summary>
 		///     The ID of the <see cref="ISubCategoryable.SubCategory" /> Record
 		/// </summary>
-		public long? SubCategoryId
+		public long SubCategoryId
 		{
 			get;
 			set;
@@ -94,7 +86,7 @@
 		/// <summary>
 		///     The ID of the <see cref="ITertiaryCategoryable.TertiaryCategory" /> Record
 		/// </summary>
-		public long? TertiaryCategoryId
+		public long TertiaryCategoryId
 		{
 			get;
 			set;
@@ -165,110 +157,6 @@
 		///     Notes that are available to administrators and moderators only
 		/// </summary>
 		public string PrivateNotes
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyAppointmentable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Appointment" /> Records
-		/// </summary>
-		public ICollection<Appointment> Appointments
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyComponentable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Component" /> Records
-		/// </summary>
-		public ICollection<Component> Components
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyEngineable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Engine" /> Records
-		/// </summary>
-		public ICollection<Engine> Engines
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyImageable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Image" /> Records
-		/// </summary>
-		public ICollection<Image> Images
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyInformationable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Information" /> Records
-		/// </summary>
-		public ICollection<Information> UserInformation
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyPartable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Part" /> Records
-		/// </summary>
-		public ICollection<Part> Parts
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyProjectable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Project" /> Records
-		/// </summary>
-		public ICollection<Project> Projects
-		{
-			get;
-			set;
-		}
-
-		#endregion
-
-		#region Implementation of IManyVehicleable
-
-		/// <summary>
-		///     An <see cref="ICollection{T}" /> of <see cref="TechnicalMarineSolutions.Models.Binding.Vehicle" /> Records
-		/// </summary>
-		public ICollection<Vehicle> Vehicles
 		{
 			get;
 			set;

@@ -30,12 +30,15 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\TechnicalMarineSolutions.XML</DocumentationFile>
+    <LangVersion>default</LangVersion>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -219,6 +222,7 @@
   <ItemGroup>
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
+    <Compile Include="Attributes\ApplicationDbAttribute.cs" />
     <Compile Include="Attributes\BotCheckAttribute.cs" />
     <Compile Include="Attributes\CaptchaValidatorAttribute.cs" />
     <Compile Include="Attributes\ElmahHandleErrorAttribute.cs" />
@@ -336,7 +340,6 @@
     <Compile Include="Models\Binding\Vehicle.cs" />
     <Compile Include="Models\Binding\WorkOrderItem.cs" />
     <Compile Include="Models\Mapping\AppErrorMap.cs" />
-    <Compile Include="Migrations\MigrationConfiguration.cs" />
     <Compile Include="Constants\StringConstants.cs" />
     <Compile Include="Enumerators\PostalAddressType.cs" />
     <Compile Include="Enumerators\RecordStatus.cs" />
@@ -1506,7 +1509,9 @@
     <Content Include="Scripts\_references.min.js">
       <DependentUpon>_references.js</DependentUpon>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
